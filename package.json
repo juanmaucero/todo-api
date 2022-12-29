@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf node_modules package-lock.json && npm i && tsc",
-    "start": "node dist/index.js"
+    "build:docker": "docker build . -t juanma/node-web-app",
+    "start": "node dist/index.js",
+    "start:docker": "docker run -p 5000:5000 -d juanma/node-web-app"
   },
   "repository": {
     "type": "git",

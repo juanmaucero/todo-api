@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "44ee6517-8dd2-4ca9-bceb-c9dd65818013",
+		"name": "Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "key",
+						"value": "challenge",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Tarea 1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/add",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"add"
+					]
+				},
+				"description": "Add endpoint"
+			},
+			"response": []
+		},
+		{
+			"name": "List",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "key",
+						"value": "challenge",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/list",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"list"
+					]
+				},
+				"description": "Add endpoint"
+			},
+			"response": []
+		},
+		{
+			"name": "Mark Done",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "key",
+						"type": "text",
+						"value": "challenge"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"d2139651-a192-47aa-b78b-613b995bcad7\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/done",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"done"
+					]
+				},
+				"description": "Mark as Done"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
