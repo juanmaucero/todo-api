@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf node_modules package-lock.json && npm i && tsc",
-    "start": "cd dist && node index.js"
+    "start": "node dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -23,8 +23,10 @@
     "@types/node": "^18.11.15"
   },
   "dependencies": {
+    "@types/lokijs": "^1.5.7",
+    "dotenv": "^16.0.3",
     "fastify": "^4.10.2",
     "fastify-plugin": "^3.0.1",
-    "dotenv": "^16.0.3"
+    "lokijs": "^1.5.12"
   }
 }

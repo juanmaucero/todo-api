@@ -2,3 +2,4 @@ backend_challenge.md
 package-lock.json
 dist/
 node_modules/
+loki.db
