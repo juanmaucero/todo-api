@@ -5,7 +5,6 @@
   "type": "module",
   "scripts": {
     "test": "vitest",
-    "test:watch": "vitest -w",
     "build": "rm -rf node_modules package-lock.json && npm i && tsc",
     "build:docker": "docker build . -t juanma/node-web-app",
     "start": "node dist/index.js",
