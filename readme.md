@@ -36,7 +36,7 @@ Se ha escogido una BBDD documental in memory fácil de implantar: https://github
 A tener en cuenta que no debemos hacer un hard-coupling entre los endpoints y la BBDD. Deberíamos usar un patrón estrategia para desacoplar el servidor HTTP de la solución de persistencia.
 
 ## Testing
-Se implementarán tests para comprobar el input/output de la API.
+Se implementarán tests end2end para comprobar el correcto funcionamiento del servicio.
 
 ## Lenguaje
 Se va a usar TypeScript para facilitar el desarrollo ya que es más friendly a la hora de implementar el paradigma de orientación a objetos, que es algo que haremos al usar patrones de diseño.
@@ -150,6 +150,8 @@ SERVER_SECURITY_KEY=
 
 DB_SOLUTION=
 
+DB_LOCATION=
+
 ## Estructura del proyecto folders
 ```
 .
@@ -174,7 +176,7 @@ DB_SOLUTION=
 │   │   ├── addTaskRoute.ts
 │   │   ├── listTaskRoute.ts
 │   │   └── markDoneRoute.ts
-│   ├── tests
+│   ├── tests => Carpeta que contiene los tests e2e de la app.
 │   ├── ts => Carpeta que contiene modelos e interfaces.
 │   │   ├── interfaces
 │   │   │   ├── db.interface.ts

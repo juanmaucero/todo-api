@@ -14,7 +14,7 @@ class LokiDB implements DBInterface {
      */
     constructor() {
         const self = this;
-        this.db = new loki('./loki.db', {
+        this.db = new loki(String(process.env.DB_LOCATION), {
             autoload: true,
             autoloadCallback : () => {
                 self.initCollections()

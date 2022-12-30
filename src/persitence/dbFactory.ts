@@ -21,7 +21,7 @@ function isValidDBType(dbSolution : string): dbSolution is DBTypes {
  */
 class DBFactory {
 
-    private static instance: DBFactory;
+    private static instance: DBFactory | null;
     public db: DBInterface;
 
     private constructor() {
@@ -38,6 +38,10 @@ class DBFactory {
             DBFactory.instance = new DBFactory();
         }
         return DBFactory.instance;
+    }
+
+    public static reset(): void {
+        DBFactory.instance = null;
     }
 }
 

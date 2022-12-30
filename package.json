@@ -4,7 +4,8 @@
   "description": "## Requisitos * NodeJS/TypeScript * Debe tener persistencia (in memory o BBDD convencional) * API HTTP con 3 endpoints     * Add task     * Mark task as done     * List status (task + status) * Dockerfile para build & execute",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
+    "test:watch": "vitest -w",
     "build": "rm -rf node_modules package-lock.json && npm i && tsc",
     "build:docker": "docker build . -t juanma/node-web-app",
     "start": "node dist/index.js",
@@ -21,8 +22,9 @@
   },
   "homepage": "https://github.com/juanmaucero/todo-api#readme",
   "devDependencies": {
+    "@types/node": "^18.11.15",
     "typescript": "^4.9.3",
-    "@types/node": "^18.11.15"
+    "vitest": "^0.25.8"
   },
   "dependencies": {
     "@types/lokijs": "^1.5.7",

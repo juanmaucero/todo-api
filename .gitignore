@@ -3,3 +3,4 @@ package-lock.json
 dist/
 node_modules/
 loki.db
+.nyc_output
