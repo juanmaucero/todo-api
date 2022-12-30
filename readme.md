@@ -127,7 +127,11 @@ Muestra una lista de tareas con sus IDs, nombre y estado.
 Se ha optado por añadir variables de entorno para así evitar hardcodear variables susceptibles a cambios según el entorno de despliegue y para posibilitar añadir valores sensibles como la clave de la API. Estas variables de entorno se podrían guardar en un secret manager (GCloud) de forma que estén completamente protegidas. El .env ha de contener las siguientes claves:
 
 SERVER_PORT=
+
 SERVER_HOST=
+
 SERVER_SECURITY_HEADER=
+
 SERVER_SECURITY_KEY=
+
 DB_SOLUTION=
