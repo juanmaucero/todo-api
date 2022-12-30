@@ -60,6 +60,8 @@ Se aplica una estructura en capas asignando a cada capa una responsabilidad:
 
 A su vez el microservicio estará protegido mediante una clave que deberá llevar en el header.
 
+Se hará uso de los logs por defecto de Fastify para que de cara a futuro se pueda usar algún componente que los pueda recolectar y analizar.
+
 ## Modelo BBDD
 BBDD NoSQL in memory que permita rápida iteración y modificación del modelo de datos.
 
