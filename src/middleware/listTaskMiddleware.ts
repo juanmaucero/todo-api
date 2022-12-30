@@ -3,6 +3,9 @@ import DBInterface from "../ts/interfaces/db.interface.js";
 import DBFactory from "../persitence/dbFactory.js";
 import Utils from "../utils/utils.js";
 
+/**
+ * Class that contains the hooks of the lifecycle of a request on the endpoint list task.
+ */
 class ListTaskMiddleware {
     async onRequest(request: FastifyRequest, reply: FastifyReply): Promise<void> {
         if(!Utils.isAuthorized(request)) {

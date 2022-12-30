@@ -45,6 +45,8 @@ async function main() {
     );
   }
 }
+
+// Load environment variables
 const result = dotenv.config()
 if (result.error) {
   throw result.error;

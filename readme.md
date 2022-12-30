@@ -18,9 +18,9 @@
 
 ## Modelo de datos
 El modelo de datos es simple, tendriamos una entidad llamada tarea con las siguientes propiedades:
-* Identificador: string
-* Nombre: string
-* Estado: boolean
+* id: string
+* name: string
+* isDone: boolean
 
 ## Servidor HTTP
 Se va a implementar un server HTTP usando la librería Fastify por ser una solución robusta y simple de implementar.
@@ -42,7 +42,7 @@ Se implementarán tests para comprobar el input/output de la API.
 Se va a usar TypeScript para facilitar el desarrollo ya que es más friendly a la hora de implementar el paradigma de orientación a objetos, que es algo que haremos al usar patrones de diseño.
 
 ## Docker
-Se ha añadido un dockerfile y los comandos para construirlo y lanzarlo en el package.json de forma que no ocurra el famoso "en mi local funciona".
+Se ha añadido un dockerfile y los comandos para construirlo y lanzarlo en el package.json de forma que no ocurra el famoso "en mi local funciona". Se ha usado una imagen alpine para que sea más ligera en la máquina donde se ejecute.
 
 ## Postman
 Se añadirá una carpeta con la coleccion de requests de postman para poder probar los endpoints de forma sencilla.
@@ -84,31 +84,41 @@ Añade una tarea a la BBDD.
 * POST
 * headers: clave-seguridad: valor
 * body (JSON): 
+```
 {
     "name": string
 }
-* response (JSON), statusCode: 201: inserción correcta:
+```
+* response (JSON), statusCode: 201: inserción correcta, contiene el ID de la tarea creada:
+```
 {
     "Status": "Task created",
     "ID": "cef25720-a4b8-4c88-b029-5183c21a37d2"
 }
+```
 
 ### /done
 Marca una tarea como hecha.
 * POST
 * headers: clave-seguridad: valor
 * body (JSON): 
+```
 {
 	"id": string
 }
+```
 * response (JSON), statusCode: 404: ID no encontrado en la BBDD:
+```
 {
     "Status": "Task with ID 1bb3ca07-a51a-4d2b-b831-156df952caed not found"
 }
+```
 * response (JSON), statusCode: 200: tarea marcada como finalizada:
+```
 {
     "Status": "Task with ID cef25720-a4b8-4c88-b029-5183c21a37d2 marked as done"
 }
+```
 
 ### /list
 Muestra una lista de tareas con sus IDs, nombre y estado.
@@ -117,12 +127,14 @@ Muestra una lista de tareas con sus IDs, nombre y estado.
 * headers: clave-seguridad: valor
 * body: no necesita
 * response (JSON), statusCode: 200: listado conseguido:
+```
 {
     "Status": "Task list",
     "Tasks": [
         "Task ID: cef25720-a4b8-4c88-b029-5183c21a37d2. Task 'Tarea 3'. Status: Done"
     ]
 }
+```
 
 
 ## Variables de Entorno
@@ -137,3 +149,52 @@ SERVER_SECURITY_HEADER=
 SERVER_SECURITY_KEY=
 
 DB_SOLUTION=
+
+## Estructura del proyecto folders
+```
+.
+├── Dockerfile
+├── package.json
+├── postman => Carpeta con la colección postman de las requests.
+│   └── Challenge.postman_collection.json
+├── readme.md
+├── src
+│   ├── config => Archivos para la configuración de los endpoints.
+│   │   ├── endpoints.ts
+│   │   └── schemas.ts
+│   ├── index.ts => Entrypoint de la app, capa de servidor.
+│   ├── middleware => Capa middleware.
+│   │   ├── addTaskMiddleware.ts
+│   │   ├── listTaskMiddleware.ts
+│   │   └── markDoneMiddleware.ts
+│   ├── persitence => Capa de persistencia.
+│   │   ├── dbFactory.ts
+│   │   └── loki.ts
+│   ├── routes => Capa de rutas.
+│   │   ├── addTaskRoute.ts
+│   │   ├── listTaskRoute.ts
+│   │   └── markDoneRoute.ts
+│   ├── tests
+│   ├── ts => Carpeta que contiene modelos e interfaces.
+│   │   ├── interfaces
+│   │   │   ├── db.interface.ts
+│   │   │   └── task.interface.ts
+│   │   └── models
+│   │       └── task.model.ts
+│   └── utils => Carpeta con archivos supletorios de utilidades.
+│       └── utils.ts
+└── tsconfig.json
+```
+# Futuras Mejoras
+
+## ESLint Precommit
+Con ESLint podríamos asegurar la santadrización del código y adopción de buenas prácticas. Además si lo metemos en el hook de precommit de git, obligamos a que solo se pueda subir código que implemente esos estándares de calidad.
+
+## CICD
+Un flujo de CICD que buildease la webapp y la expusiese en algún endpoint.
+
+## Métricas
+Si fuese desplegado en un CloudRun o equivalente de Google Cloud, podrían obtenerse métricas del rendimiento de la webapp, llamadas a los endpoints, etc...
+
+## Herramienta de documentación
+Habría que generar una documentación de forma automatizada con el CICD a raíz de los comentarios que hay en código.

@@ -2,6 +2,13 @@ import {FastifyInstance, FastifyReply, FastifyRequest} from 'fastify';
 import ListTaskMiddleware from '../middleware/listTaskMiddleware.js';
 import endpoints from '../config/endpoints.js';
 
+/**
+ * listTaskRoute function, it configures the list task endpoint and attaches properties like
+ * url and request lifecycle hooks. It connects the route layer with the middleware layer as well.
+ * @param server
+ * @param opts 
+ * @param done 
+ */
 const listTaskRoute = async (server: FastifyInstance, opts: object, done: () => void) => {
   server.route({
     method: 'POST',

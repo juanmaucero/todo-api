@@ -4,6 +4,9 @@ import DBFactory from "../persitence/dbFactory.js";
 import Task from "../ts/models/task.model.js";
 import Utils from "../utils/utils.js";
 
+/**
+ * Class that contains the hooks of the lifecycle of a request on the endpoint add task.
+ */
 class AddTaskMiddleware {
     async onRequest(request: FastifyRequest, reply: FastifyReply): Promise<void> {
         if(!Utils.isAuthorized(request)) {

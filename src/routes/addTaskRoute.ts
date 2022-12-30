@@ -3,6 +3,14 @@ import endpoints from '../config/endpoints.js';
 import AddTaskMiddleware from '../middleware/addTaskMiddleware.js';
 import { SCHEMAS, SCHEMA_NAMES } from '../config/schemas.js';
 
+/**
+ * addTaskRoute function, it configures the add task endpoint and attaches properties like
+ * schema validation, url and request lifecycle hooks. It connects the route layer with 
+ * the middleware layer as well.
+ * @param server
+ * @param opts 
+ * @param done 
+ */
 const addTaskRoute = async (server: FastifyInstance, opts: object, done: () => void) => {
   server.addSchema(SCHEMAS.ADD_TASK_SCH);
   server.route({
