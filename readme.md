@@ -210,3 +210,8 @@ Si fuese desplegado en un CloudRun o equivalente de Google Cloud, podrían obten
 
 ## Herramienta de documentación
 Habría que generar una documentación de forma automatizada con el CICD a raíz de los comentarios que hay en código.
+
+# Referencias
+* https://www.fastify.io/docs/latest
+* https://github.com/techfort/LokiJS
+* https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
