@@ -185,6 +185,18 @@ DB_SOLUTION=
 │       └── utils.ts
 └── tsconfig.json
 ```
+# Ejecución
+
+Requisito: tener docker instalado.
+
+Basta con lanzar los siguientes comandos, estando en el root del proyecto:
+
+```npm run build:docker```
+
+```npm run start:docker```
+
+Y ya se podrían lanzar requests a los endpoints a través de localhost:5000.
+
 # Futuras Mejoras
 
 ## ESLint Precommit
